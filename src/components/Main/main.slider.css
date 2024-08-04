@@ -1,0 +1,42 @@
+.slick-prev,
+.slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: 'slick';
+    font-size: 25px;
+    line-height: 1;
+    opacity: .75;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* border: 1px solid gray; */
+}
+
+.container-slider {
+    text-align: center;
+}
+
+.conatiner-content-slider {
+    display: flex;
+    gap: 10px;
+    border: 1px solid gray;
+    height: 209px;
+    width: 173px;
+    margin-left: 5px;
+}

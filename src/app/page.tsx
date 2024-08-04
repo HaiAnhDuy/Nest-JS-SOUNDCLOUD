@@ -1,10 +1,14 @@
 import HeaderBar from "@/components/HeaderBar/headerbar";
+import MainSlider from "@/components/Main/main.slider";
+import { Container } from "@mui/material";
+
 export default function HomePage() {
   return (
     <>
-      <div>
-        home page
-      </div>
+      <Container>
+        <MainSlider />
+      </Container>
+
     </>
   );
 }
