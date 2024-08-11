@@ -1,22 +1,46 @@
 import HeaderBar from "@/components/HeaderBar/headerbar";
 import MainSlider from "@/components/Main/main.slider";
 import { Container } from "@mui/material";
-import { sendRequestJS } from "@/utils/old.api"
+import { sendRequest } from "@/utils/api"
+
 export default async function HomePage() {
-  const res = await sendRequestJS({
+  const chills = await sendRequest<IBackendRes<ITracksTop[]>>({
     url: 'http://localhost:8000/api/v1/tracks/top',
     method: 'POST',
     body: {
       category: 'CHILL',
-      limit: 2
+      limit: 10
     }
   })
-  console.log('>>> ', res)
+
+  const workout = await sendRequest<IBackendRes<ITracksTop[]>>({
+    url: 'http://localhost:8000/api/v1/tracks/top',
+    method: 'POST',
+    body: {
+      category: 'WORKOUT',
+      limit: 10
+    }
+  })
+
+  const party = await sendRequest<IBackendRes<ITracksTop[]>>({
+    url: 'http://localhost:8000/api/v1/tracks/top',
+    method: 'POST',
+    body: {
+      category: 'PARTY',
+      limit: 10
+    }
+  })
 
   return (
     <>
       <Container>
-        <MainSlider />
+        <MainSlider
+          data={chills?.data ? chills.data : []}
+        />
+        <MainSlider
+          data={workout?.data ? workout.data : []} />
+        <MainSlider
+          data={party?.data ? party.data : []} />
       </Container>
 
 

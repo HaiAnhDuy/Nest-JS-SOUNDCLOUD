@@ -12,7 +12,7 @@ const FooterAppBar = () => {
     const HasMount = useHasMounted()
     if (HasMount === false) return (<></>)
 
-    console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
+    // console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
     return (
 
         <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, margin: '0 auto', backgroundColor: '#f2f2f2' }}>
@@ -20,7 +20,7 @@ const FooterAppBar = () => {
                 <AudioPlayer
                     autoPlay
                     src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/tracks/CHILL.mp3`}
-                    onPlay={e => console.log("onPlay")}
+                    // onPlay={e => console.log("onPlay")}
                     style={
                         {
                             boxShadow: 'none',

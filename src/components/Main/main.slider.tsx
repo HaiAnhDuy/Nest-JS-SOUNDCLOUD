@@ -9,19 +9,27 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { url } from 'inspector';
 import Divider from '@mui/material/Divider';
+import { useState } from 'react';
+interface Iprops {
+    data: ITracksTop[]
+}
+// import './main.slider.css'
+
+
 const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
+
     return (
-        <Button variant="outlined"
+        <Button variant="contained"
             sx={{
                 position: 'absolute',
                 right: 0,
                 cursor: 'pointer',
                 zIndex: 1000,
-                top: '40%',
+                top: '30%',
                 minWidth: 30,
                 width: 35,
-
+                backgroundColor: '#000'
 
 
 
@@ -36,15 +44,16 @@ const SampleNextArrow = (props: any) => {
 const SamplePrevArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
-        <Button variant="outlined"
+        <Button variant="contained"
             sx={{
                 position: 'absolute',
                 left: 0,
                 cursor: 'pointer',
                 zIndex: 1000,
-                top: '40%',
+                top: '30%',
                 minWidth: 30,
                 width: 35,
+                backgroundColor: '#000'
 
 
 
@@ -57,7 +66,7 @@ const SamplePrevArrow = (props: any) => {
     );
 }
 
-const MainSlider = () => {
+const MainSlider = (props: Iprops) => {
     let settings: Settings = {
         dots: true,
         infinite: true,
@@ -69,13 +78,15 @@ const MainSlider = () => {
 
 
     };
+    const data_new = props.data
+
     return (
 
 
         <Box
             sx={{
                 margin: "0 70px",
-                marginTop: "100px",
+                marginTop: "50px",
 
 
                 ".conatiner-content-slider": {
@@ -86,30 +97,77 @@ const MainSlider = () => {
                 },
                 ".content-slider": {
                     margin: '0 auto',
-                    border: "1px solid black",
+                    // border: "1px solid black",
                     height: "209px",
                     // width: "173px",
                     ".content-img": {
                         height: '173px',
                         // width: '173px',
-                        backgroundImage: `url(https://al.sndcdn.com/labs-e1c75f27-0-t200x200.jpg?q=YXJ0d29ya190eXBlOiBNT1JFX09GX1dIQVRfWU9VX0xJS0UKdXJuczogInNvdW5kY2xvdWQ6dHJhY2tzOjE1MDcyOTYzMzQiCnVybnM6ICJzb3VuZGNsb3VkOnRyYWNrczoxNjQxOTcxMzA3Igp1cm5zOiAic291bmRjbG91ZDp0cmFja3M6MTYyOTc2MjM0OCIKdXJuczogInNvdW5kY2xvdWQ6dHJhY2tzOjEwMzg0MTMwODMiCnVybnM6ICJzb3VuZGNsb3VkOnRyYWNrczoxNjg1MzI2MjMzIgo%3D)`,
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'contain'
                     },
-                    ".content-artist": {
+                    "content-total": {
+                        margin: '11px'
+
+                    },
+                    ".content-tracks": {
                         color: '#333',
                         fontSize: '14px',
-                        position: ''
+                        textTransform: 'uppercase'
+                    },
+                    ".content-arstit": {
+                        color: '#999',
+                        fontSize: '12px',
+                        fontWeight: 100,
+
+
+                    },
+                    ".long-content": {
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        wordBreak: 'normal'
                     }
                 }
             }}
         >
             <h3>
-                Muti Trap
+                {data_new && data_new.length > 0 ? data_new[0].category : ''}
             </h3>
 
             <Slider {...settings} >
+                {
+                    data_new && data_new.length > 0
+                        ? data_new.map((items, index) => {
+                            return (
+                                <div className="conatiner-content-slider">
+                                    <div className='content-slider'>
+                                        <div className='content-img' style={{
+                                            backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${items.imgUrl})`,
+                                        }}>
 
+                                        </div>
+                                        <div className='content-total'>
+                                            <div className='content-tracks long-content'>{items.title}</div>
+                                            <div className='content-arstit long-content'>{items.description}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            )
+                        })
+                        :
+                        ''
+
+                }
+                {/* <div className="conatiner-content-slider">
+                    <div className='content-slider'>
+                        <div className='content-img'>
+
+                        </div>
+                        <div className='content-artist'>Hieu thu 2</div>
+                    </div>
+                </div>
                 <div className="conatiner-content-slider">
                     <div className='content-slider'>
                         <div className='content-img'>
@@ -119,32 +177,44 @@ const MainSlider = () => {
                     </div>
                 </div>
                 <div className="conatiner-content-slider">
-                    <div className='content-slider'>1</div>
+                    <div className='content-slider'>
+                        <div className='content-img'>
 
+                        </div>
+                        <div className='content-artist'>Hieu thu 2</div>
+                    </div>
                 </div>
                 <div className="conatiner-content-slider">
-                    <div className='content-slider'>1</div>
+                    <div className='content-slider'>
+                        <div className='content-img'>
 
+                        </div>
+                        <div className='content-artist'>Hieu thu 2</div>
+                    </div>
                 </div>
                 <div className="conatiner-content-slider">
-                    <div className='content-slider'>1</div>
+                    <div className='content-slider'>
+                        <div className='content-img'>
 
+                        </div>
+                        <div className='content-artist'>Hieu thu 2</div>
+                    </div>
                 </div>
                 <div className="conatiner-content-slider">
-                    <div className='content-slider'>1</div>
+                    <div className='content-slider'>
+                        <div className='content-img'>
 
-                </div>
-                <div className="conatiner-content-slider">
-                    <div className='content-slider'>1</div>
-
-                </div>
+                        </div>
+                        <div className='content-artist'>Hieu thu 2</div>
+                    </div>
+                </div> */}
 
 
             </Slider>
             <Divider sx={{
                 marginTop: '40px'
             }} />
-        </Box>
+        </Box >
 
 
 

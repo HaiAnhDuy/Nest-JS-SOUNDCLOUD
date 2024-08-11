@@ -40,3 +40,19 @@
     width: 173px;
     margin-left: 5px;
 }
+
+.content-tracks {
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.content-arstit {
+    font-size: 12px;
+    font-weight: 100;
+    color: #999;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: normal;
+}
