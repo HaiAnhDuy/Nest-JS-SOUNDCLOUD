@@ -1,4 +1,4 @@
-import HeaderBar from "@/components/HeaderBar/headerbar";
+
 import MainSlider from "@/components/Main/main.slider";
 import { Container } from "@mui/material";
 import { sendRequest } from "@/utils/api"

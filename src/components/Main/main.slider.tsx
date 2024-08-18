@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import { url } from 'inspector';
 import Divider from '@mui/material/Divider';
 import { useState } from 'react';
+import Link from 'next/link';
 interface Iprops {
     data: ITracksTop[]
 }
@@ -142,11 +143,15 @@ const MainSlider = (props: Iprops) => {
                             return (
                                 <div className="conatiner-content-slider">
                                     <div className='content-slider'>
-                                        <div className='content-img' style={{
-                                            backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${items.imgUrl})`,
-                                        }}>
 
-                                        </div>
+
+                                        <Link href={`/track/${items._id}?audio=${items.trackUrl}`}>
+                                            <div className='content-img' style={{
+                                                backgroundImage: `url(${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${items.imgUrl})`,
+                                            }}>
+
+                                            </div>
+                                        </Link>
                                         <div className='content-total'>
                                             <div className='content-tracks long-content'>{items.title}</div>
                                             <div className='content-arstit long-content'>{items.description}</div>
