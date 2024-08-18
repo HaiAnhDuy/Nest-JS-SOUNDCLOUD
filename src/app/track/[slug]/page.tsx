@@ -1,5 +1,6 @@
 'use client'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
+import WaveTrack from '@/components/track/wave.track';
 const DetailPageTrack = (props: any) => {
     const searchParams = useSearchParams()
 
@@ -9,6 +10,7 @@ const DetailPageTrack = (props: any) => {
     return (
         <div>
             DetailPageTrack
+            <WaveTrack />
         </div>
     )
 }
